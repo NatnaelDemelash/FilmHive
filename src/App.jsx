@@ -51,39 +51,41 @@ const App = () => {
   }, []);
 
   return (
-    <div className="container mx-auto">
-      <header className="px-4 py-8 max-w-4xl mx-auto text-center">
-        <img
-          className="w-[80%] max-w-[600px] mx-auto mb-6"
-          src="/hero.png"
-          alt="hero image"
-        />
-        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
-          Find <span className="text-orange-500 font-semibold">Movies</span>{' '}
-          You'll Enjoy Without the Hassle
-        </h1>
+    <div className=" bg-[url('/public/pattern-2.png')]">
+      <div className="container mx-auto">
+        <header className="px-4 py-8 max-w-4xl mx-auto text-center">
+          <img
+            className="w-[80%] max-w-[600px] mx-auto mb-6"
+            src="/hero.png"
+            alt="hero image"
+          />
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            Find <span className="text-orange-500 font-semibold">Movies</span>{' '}
+            You'll Enjoy Without the Hassle
+          </h1>
 
-        {/* Search */}
-        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </header>
+          {/* Search */}
+          <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </header>
 
-      {/* Movies Section */}
-      <section className="max-w-6xl mx-auto px-4 py-8">
-        {errorMessage && (
-          <div className="py-4 text-red-500 text-center">{errorMessage}</div>
-        )}
-        {isLoading ? (
-          <div className="text-center py-8 text-gray-600">
-            Loading movies...
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {movieLists.map((movie) => (
-              <MovieCard movie={movie} key={movie.id} />
-            ))}
-          </div>
-        )}
-      </section>
+        {/* Movies Section */}
+        <section className="max-w-6xl mx-auto px-4 py-8">
+          {errorMessage && (
+            <div className="py-4 text-red-500 text-center">{errorMessage}</div>
+          )}
+          {isLoading ? (
+            <div className="text-center py-8 text-gray-600">
+              Loading movies...
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {movieLists.map((movie) => (
+                <MovieCard movie={movie} key={movie.id} />
+              ))}
+            </div>
+          )}
+        </section>
+      </div>
     </div>
   );
 };
