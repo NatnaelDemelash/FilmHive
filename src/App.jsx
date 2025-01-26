@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Search from './components/Search';
+import MovieCard from './components/MovieCard';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -78,27 +79,7 @@ const App = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {movieLists.map((movie) => (
-              <div
-                key={movie.id}
-                className="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:scale-105"
-              >
-                <img
-                  className="w-full h-72 object-cover"
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <div className="p-4 mb-2">
-                  <h2 className="text-xl font-semibold text-gray-800 truncate">
-                    {movie.title}
-                  </h2>
-                  <p className="text-sm text-gray-500">
-                    Release Date: {movie.release_date || 'N/A'}
-                  </p>
-                  <p className="text-sm text-orange-500 mt-3">
-                    Rating: {movie.vote_average.toFixed(1) || 'N/A'}
-                  </p>
-                </div>
-              </div>
+              <MovieCard movie={movie} key={movie.id} />
             ))}
           </div>
         )}
