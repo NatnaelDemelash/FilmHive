@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Search from './components/Search';
 import MovieCard from './components/MovieCard';
+import Spinner from './components/Spinner';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -75,7 +76,7 @@ const App = () => {
           )}
           {isLoading ? (
             <div className="text-center py-8 text-gray-600">
-              Loading movies...
+              <Spinner />
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
