@@ -75,6 +75,11 @@ const App = () => {
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </header>
 
+        <h1 className="max-w-[69rem] sm:mx-auto text-3xl md:text-4xl lg:text-5xl font-light ml-4 leading-tight mb-6">
+          Popular
+        </h1>
+
+        <hr className="text-gray-300 max-w-6xl mx-auto" />
         {/* Movies Section */}
         <section className="max-w-6xl mx-auto px-4 py-8">
           {errorMessage && (
