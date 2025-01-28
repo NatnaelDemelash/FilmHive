@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Search from './components/Search';
 import MovieCard from './components/MovieCard';
 import Spinner from './components/Spinner';
+import { useDebounce } from 'react-use';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -19,6 +20,9 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [movieLists, setMovieLists] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [debounceSearchTearm, setDebounceSearchTearm] = useState('');
+
+  useDebounce(() => setDebounceSearchTearm(searchTerm), 500, [searchTerm]);
 
   const fetchMovies = async (query) => {
     setIsLoading(true);
@@ -50,11 +54,11 @@ const App = () => {
   };
 
   useEffect(() => {
-    fetchMovies(searchTerm);
-  }, [searchTerm]);
+    fetchMovies(debounceSearchTearm);
+  }, [debounceSearchTearm]);
 
   return (
-    <div className=" bg-[url('/public/pattern-2.png')]">
+    <div>
       <div className="container mx-auto">
         <header className="px-4 py-8 max-w-4xl mx-auto text-center">
           <img
